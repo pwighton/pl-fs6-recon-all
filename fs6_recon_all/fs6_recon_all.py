@@ -12,7 +12,7 @@ import os
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
-
+from subprocess import call
 
 class Fs6_recon_all(ChrisApp):
     """
@@ -47,15 +47,15 @@ class Fs6_recon_all(ChrisApp):
         """
         Define the CLI arguments accepted by this plugin app.
         """
+        self.add_argument('--subject', dest='subject', type=str, optional=False,
+                          help='subject name to recon')
 
     def run(self, options):
         """
         Define the code to be run by this plugin app.
         """
+		call(["recon-all", "-all", "-s", options.subject])
 
-
-
-# ENTRYPOINT
 if __name__ == "__main__":
     app = Fs6_recon_all()
     app.launch()
