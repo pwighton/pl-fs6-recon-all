@@ -48,9 +48,7 @@ docker run -it --rm \
       /incomming /outgoing
 ```
 
-To convert the `.mgz` outputs to nifit
-This will only do skull stripping.  See [here](https://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable) for more info on the stream
-
+To convert an `.mgz` outputs to `.nii.gz`
 ```
 docker run -it --rm \
   -e FS_KEY='cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==' \
