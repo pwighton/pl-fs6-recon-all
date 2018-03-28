@@ -1,21 +1,16 @@
-################################
-pl-fs6-recon-all
-################################
+# pl-fs6-recon-all
 
-
-Abstract
-********
+## Abstract
 
 Runs the [FreeSurfer 6.0](https://surfer.nmr.mgh.harvard.edu/) [`recon-all`](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all) stream.
 
-Building the container
-***
+## Building the container
+
 ```
 docker build -t pwighton/pl-fs6-recon-all .
 ```
 
-Running
-***
+## Running
 
 Assign an "input" directory to ``/subjects`` and an output directory to ``/outgoing``
 
