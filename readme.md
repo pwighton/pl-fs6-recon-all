@@ -2,7 +2,7 @@
 
 ## Abstract
 
-ChRIS plugin to run the [FreeSurfer 6.0](https://surfer.nmr.mgh.harvard.edu/) [`recon-all`](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all) stream.
+[ChRIS plugin](https://github.com/FNNDSC/CHRIS_docs) to run the [FreeSurfer 6.0](https://surfer.nmr.mgh.harvard.edu/) [`recon-all`](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all) stream.
 
 ## Building the container
 
