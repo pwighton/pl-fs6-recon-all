@@ -49,6 +49,16 @@ docker run -it --rm \
 
 This will only do skull stripping.  See [here](https://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable) for more info on the stream
 
+.. code-block:: bash
+docker run -it --rm \
+  -e FS_KEY='cGF1bEBjb3J0aWNvbWV0cmljcy5jb20KMzA0NDQKICpDZ3lrR3o2bnNYaGcKIEZTVXQweHY5UmlGcWMK' \
+  -v /tmp/sub/out:/tmp/sub/out \
+  corticometrics/fs6-base \
+    mri_convert /tmp/sub/out/subjects/bert/mri/brainmask.mgz \
+                /tmp/sub/out/subjects/bert/mri/brainmask.nii.gz
+
+This will convert `brainmask.mgz` to `brainmask.nii.gz`
+
 Make sure that the host ``$(pwd)/out`` directory is world writable!
 
 
