@@ -6,10 +6,17 @@ pl-fs6-recon-all
 Abstract
 ********
 
-See https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all
+Runs the [FreeSurfer 6.0](https://surfer.nmr.mgh.harvard.edu/) [`recon-all`](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all) stream.
 
 Run
 ***
+
+Building the container
+====================
+
+.. code-block:: bash
+
+    docker build -t fnndsc/pl-fs6-recon-all .
 
 Using ``docker run``
 ====================
@@ -18,9 +25,13 @@ Assign an "input" directory to ``/incoming`` and an output directory to ``/outgo
 
 .. code-block:: bash
 
-    docker run --rm -v $(pwd)/in:/incoming -v $(pwd)/out:/outgoing   \
-            fnndsc/pl-fs6-recon-all fs6_recon_all.py            \
-            /incoming /outgoing
+docker run -it --rm \
+  -e FS_KEY='cGF1bEBjb3J0aWNvbWV0cmljcy5jb20KMzA0NDQKICpDZ3lrR3o2bnNYaGcKIEZTVXQweHY5UmlGcWMJ' \
+  -v /tmp/sub/in/:/subjects \
+  -v /tmp/sub/out:/outgoing \
+  fnndsc/pl-fs6-recon-all \
+    fs6_recon_all.py \
+      --subject bert /incomming /outgoing
 
 This will ...
 

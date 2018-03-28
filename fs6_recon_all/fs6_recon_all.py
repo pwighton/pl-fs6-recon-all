@@ -7,6 +7,7 @@
 #              http://childrenshospital.org/FNNDSC/
 #                        dev@babyMRI.org
 #
+#!/usr/bin/env python3
 
 import os
 
@@ -23,9 +24,9 @@ class Fs6_recon_all(ChrisApp):
     SELFEXEC        = os.path.basename(__file__)
     EXECSHELL       = 'python3'
     TITLE           = 'FreeSurfer 6.0 recon-all stream'
-    CATEGORY        = 'neuro'
+    CATEGORY        = 'neuro; mri'
     TYPE            = 'ds'
-    DESCRIPTION     = 'See https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all'
+    DESCRIPTION     = 'Neuromorphometric analysis of T1w MRI volumes'
     DOCUMENTATION   = 'https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all'
     VERSION         = '0.1'
     LICENSE         = 'Opensource (MIT)'
@@ -54,7 +55,8 @@ class Fs6_recon_all(ChrisApp):
         """
         Define the code to be run by this plugin app.
         """
-		call(["recon-all", "-all", "-s", options.subject])
+        call(["recon-all", "-all", "-s", options.subject])
+        call(["cp", "-R", "/subjects/", "/outgoing/"])
 
 if __name__ == "__main__":
     app = Fs6_recon_all()
