@@ -50,12 +50,17 @@ class Fs6_recon_all(ChrisApp):
         """
         self.add_argument('--subject', dest='subject', type=str, optional=False,
                           help='subject name to recon')
+        self.add_argument('--ar1', dest='ar1', type=bool, optional=True,
+                          default=False, help='Only run autorecon1')
 
     def run(self, options):
         """
         Define the code to be run by this plugin app.
         """
-        call(["recon-all", "-all", "-s", options.subject])
+        if options.ar1:
+    	    call(["recon-all", "-autorecon1", "-s", options.subject])
+        else:
+    	    call(["recon-all", "-all", "-s", options.subject])            
         call(["cp", "-R", "/subjects/", "/outgoing/"])
 
 if __name__ == "__main__":
