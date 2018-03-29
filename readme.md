@@ -20,7 +20,7 @@ Also required is the environment variable `FS_KEY` that is a base64 encoding of 
 base64 -w999 ~/Downloads/license.txt
 ```
 
-The current string for the ChRIS license file is: `cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==`
+The current string for the ChRIS license file is: `cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==`.  Inside of chris, this is [set by default](https://github.com/pwighton/pl-fs6-recon-all/blob/ff00be68ada43d467dc1bc173b1e1419ed3b87d3/fs6_recon_all/fs6_recon_all.py#L53)
 
 ### Examples
 
@@ -32,7 +32,6 @@ docker run -it --rm \
   pwighton/pl-fs6-recon-all \
     fs6_recon_all.py \
       --subject bert 
-      --fs-key cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==
       /incomming /outgoing
 ```
 
@@ -44,7 +43,6 @@ This will only do skull stripping.  See [here](https://surfer.nmr.mgh.harvard.ed
 	  pwighton/pl-fs6-recon-all \
 		fs6_recon_all.py \
 		  --subject bert \
-		  --fs-key cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg== \
 		  --ar1 \
 		  /incomming /outgoing
 ```
