@@ -27,25 +27,26 @@ The current string for the ChRIS license file is: `cnVkb2xwaC5ubXJAZ21haWwuY29tC
 This will run the entire stream (several hours):
 ```
 docker run -it --rm \
-  -e FS_KEY='cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==' \
   -v /tmp/sub/in/:/subjects \
   -v /tmp/sub/out:/outgoing \
-  fnndsc/pl-fs6-recon-all \
+  pwighton/pl-fs6-recon-all \
     fs6_recon_all.py \
-      --subject bert /incomming /outgoing
+      --subject bert 
+      --fs-key cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==
+      /incomming /outgoing
 ```
 
 This will only do skull stripping.  See [here](https://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable) for more info on the stream
 ```
-docker run -it --rm \
-  -e FS_KEY='cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==' \
-  -v /tmp/sub/in/:/subjects \
-  -v /tmp/sub/out:/outgoing \
-  fnndsc/pl-fs6-recon-all \
-    fs6_recon_all.py \
-      --subject bert \
-      --ar1 \
-      /incomming /outgoing
+	docker run -it --rm \
+	  -v /tmp/sub/in/:/subjects \
+	  -v /tmp/sub/out:/outgoing \
+	  pwighton/pl-fs6-recon-all \
+		fs6_recon_all.py \
+		  --subject bert \
+		  --fs-key cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg== \
+		  --ar1 \
+		  /incomming /outgoing
 ```
 
 To convert an `.mgz` outputs to `.nii.gz`

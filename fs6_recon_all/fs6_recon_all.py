@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 #                                                            _
 # fs6_recon_all ds app
 #
@@ -7,9 +9,8 @@
 #              http://childrenshospital.org/FNNDSC/
 #                        dev@babyMRI.org
 #
-#!/usr/bin/env python3
-
 import os
+import base64
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
@@ -48,6 +49,9 @@ class Fs6_recon_all(ChrisApp):
         """
         Define the CLI arguments accepted by this plugin app.
         """
+        self.add_argument('--fs-key', dest='fs_key', type=str, optional=True,
+                          default='cnVkb2xwaC5ubXJAZ21haWwuY29tCjM1Mzc3CiAqQ0liU0R6Z01RQlFRCiBGU0JBUC84aHBWOU0yCg==',
+                          help='base64 encoding of freesurfer license file')
         self.add_argument('--subject', dest='subject', type=str, optional=False,
                           help='subject name to recon')
         self.add_argument('--ar1', dest='ar1', type=bool, optional=True,
@@ -57,10 +61,19 @@ class Fs6_recon_all(ChrisApp):
         """
         Define the code to be run by this plugin app.
         """
+        # Write the license file
+        # todo: replace "/freesurfer/license.txt" with ${FREESURFER_HOME}/license.txt
+        #   where ${FREESURFER_HOME} is an env	 var
+        with open("/freesurfer/license.txt", "wb") as text_file:
+            text_file.write(base64.b64decode(options.fs_key))
+
+        # Run recon-all
         if options.ar1:
-    	    call(["recon-all", "-autorecon1", "-s", options.subject])
+            call(["recon-all", "-autorecon1", "-s", options.subject])
         else:
-    	    call(["recon-all", "-all", "-s", options.subject])            
+            call(["recon-all", "-all", "-s", options.subject])            
+
+        # Copy recon'd subjets dir to outdir (could use some work)
         call(["cp", "-R", "/subjects/", "/outgoing/"])
 
 if __name__ == "__main__":
